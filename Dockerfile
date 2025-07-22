@@ -1,5 +1,5 @@
 # Use a Maven image to build the Spring Boot application
-FROM maven:3.8.8-amazoncorretto-17 AS build
+FROM public.ecr.aws/amazoncorretto/maven:3.8.8-amazoncorretto-17 AS build
 
 # Set the working directory
 WORKDIR /app
@@ -13,7 +13,7 @@ COPY src /app/src
 RUN mvn clean package -DskipTests
 
 # Use OpenJDK to run the Spring Boot application
-FROM maven:3.8.8-amazoncorretto-17
+FROM public.ecr.aws/amazoncorretto/maven:3.8.8-amazoncorretto-17
 
 # Set the working directory
 WORKDIR /app
